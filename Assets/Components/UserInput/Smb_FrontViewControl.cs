@@ -17,8 +17,8 @@ public class Smb_FrontViewControl : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         mousePosition = Mouse.current.position.ReadValue();
-        objectDisplacement.y = mousePosition.y/200;
-        objectDisplacement.x = mousePosition.x/200;
+        objectDisplacement.y = mousePosition.y/300;
+        objectDisplacement.x = mousePosition.x/300;
         objectDisplacement.z = so_grabAndMove.selectedObject.transform.position.z;
         so_grabAndMove.newPosition = objectDisplacement;
         so_grabAndMove.RepositionObject();

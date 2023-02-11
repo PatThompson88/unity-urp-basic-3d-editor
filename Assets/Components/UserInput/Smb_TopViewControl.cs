@@ -17,8 +17,8 @@ public class Smb_TopViewControl : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         mousePosition = Mouse.current.position.ReadValue();
-        objectDisplacement.z = mousePosition.y/200;
-        objectDisplacement.x = mousePosition.x/200;
+        objectDisplacement.z = mousePosition.y/300;
+        objectDisplacement.x = mousePosition.x/300;
         objectDisplacement.y = so_grabAndMove.selectedObject.transform.position.y;
         so_grabAndMove.newPosition = objectDisplacement;
         so_grabAndMove.RepositionObject();
