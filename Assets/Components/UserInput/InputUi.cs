@@ -23,10 +23,14 @@ public class InputUi : MonoBehaviour
     private bool RaycastFromCamera(Camera cam){
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Debug.DrawLine(ray.origin, ray.direction * 100, Color.red, 2f);
+        Debug.DrawLine(ray.origin, ray.direction * 25, Color.red, 1.25f);
         if (Physics.Raycast(ray, out hit)){
             if(hit.transform.gameObject.tag == "Selectable"){
                 so_grabAndMove.selectedObject = hit.transform.gameObject;
+                so_grabAndMove.originalPosition.x = so_grabAndMove.selectedObject.transform.position.x;
+                so_grabAndMove.originalPosition.y = so_grabAndMove.selectedObject.transform.position.y;
+                so_grabAndMove.originalPosition.z = so_grabAndMove.selectedObject.transform.position.z;
+                so_grabAndMove.mouseStartPosition = Mouse.current.position.ReadValue();
                 return true;
             }
         }
@@ -36,7 +40,7 @@ public class InputUi : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0)){
             clickData = new PointerEventData(eventSystem);
-            clickData.position = Input.mousePosition;
+            clickData.position = Mouse.current.position.ReadValue();
             clickResults = new List<RaycastResult>();
             uiRaycaster.Raycast(clickData, clickResults);
             if(clickResults.Count > 0){

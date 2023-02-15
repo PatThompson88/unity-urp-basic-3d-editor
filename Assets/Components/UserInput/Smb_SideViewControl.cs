@@ -16,12 +16,8 @@ public class Smb_SideViewControl : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        mousePosition = Mouse.current.position.ReadValue();
-        objectDisplacement.y = mousePosition.y/300;
-        objectDisplacement.z = mousePosition.x/300;
-        objectDisplacement.x = so_grabAndMove.selectedObject.transform.position.x;
-        so_grabAndMove.newPosition = objectDisplacement;
-        so_grabAndMove.RepositionObject();
+        so_grabAndMove.mouseCurrentPosition = Mouse.current.position.ReadValue();
+        so_grabAndMove.MoveObjectYZ();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
